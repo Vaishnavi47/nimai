@@ -1,6 +1,9 @@
 import React, { useState } from "react";
+import { signupAction } from "../Store/Actions/SignupAction";
+import { useDispatch, useSelector } from "react-redux";
 
 function Signup() {
+  const dispatch = useDispatch();
   const [data, setData] = useState({
     email: "",
     password: "",
@@ -18,7 +21,7 @@ function Signup() {
   };
 
   const handleSubmit = () => {
-    console.log("data", data);
+    dispatch(signupAction(data));
     alert("signup successful");
   };
   return (

@@ -1,8 +1,6 @@
 const userModel = require("../models/userModel");
 async function userSignUpController(req, res) {
-  console.log("userSignUpController", req.body);
   const { email, password, name } = req.body;
-  console.log("email, password, name ", email, password, name);
   try {
     const isExistingUser = await userModel.findOne({ email });
     if (isExistingUser) {
@@ -18,12 +16,10 @@ async function userSignUpController(req, res) {
       throw new Error("Please provide name");
     }
     const userData = new userModel({ email, password, name });
-    console.log(userData, "vaish");
     // you can directly pass req.body
     // if modified req.body
     // then use {...re.body, password: updatedPassword}
-    const saveUser = userData.save();
-    // debugger;
+    const saveUser = await userData.save();
     res.status(201).json({
       data: saveUser,
       success: true,
