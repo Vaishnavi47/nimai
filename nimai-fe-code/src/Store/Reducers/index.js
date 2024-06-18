@@ -4,5 +4,5 @@ import loadingReducer from "./loadingReducer";
 export default combineReducers({
   // left side name will be stated as name in store
   loadingState: loadingReducer,
-  signupReducer: signupReducer,
+  signupState: signupReducer,
 });

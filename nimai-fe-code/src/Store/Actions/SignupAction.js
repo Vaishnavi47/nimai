@@ -14,22 +14,13 @@ export const signupAction = (userData) => {
     dispatch({ type: LOADING_TRUE });
     try {
       const response = await axios.post(apiUrl, body);
+      console.log(response);
       if (response.status === 200) {
         dispatch({
           type: SIGNUP_API_SUCCESS,
           payload: { res: response.data },
         });
-      } else {
-        console.log(
-          "code: ",
-          response.data.code,
-          "message: ",
-          response.data.message
-        );
-        dispatch({
-          type: LOADING_FALSE,
-          payload: "Invalid userId or password",
-        });
+        dispatch({ type: LOADING_FALSE });
       }
     } catch (error) {
       console.log("error: ", error);

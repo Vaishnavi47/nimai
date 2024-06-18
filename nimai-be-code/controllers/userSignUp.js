@@ -20,7 +20,8 @@ async function userSignUpController(req, res) {
     // if modified req.body
     // then use {...re.body, password: updatedPassword}
     const saveUser = await userData.save();
-    res.status(201).json({
+    res.status(200).json({
+      // status: 200,
       data: saveUser,
       success: true,
       error: false,
